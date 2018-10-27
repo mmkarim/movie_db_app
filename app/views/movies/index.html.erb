@@ -1,9 +1,1 @@
-<div class="center jumbotron">
-  <% @movies.each_slice(2) do |sliced_movies| %>
-    <%= render partial: 'movie', locals: {sliced_movies: sliced_movies} %>
-  <% end %>
-</div>
-
-
-
-
+  <%= react_component('MovieBox') %>

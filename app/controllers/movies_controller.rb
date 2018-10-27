@@ -4,10 +4,10 @@ class MoviesController < ApplicationController
   # GET /movies
   # GET /movies.json
   def index
-    @movies = Movie.paginate(:page => params[:page], :per_page => 3)
+    @movies = Movie.paginate(page)
     respond_to do |format|
       format.html
-      format.js
+      format.json { render json: {movies: @movies, page: page, total_pages: Movie.total_pages}, status: :ok }
     end
   end
 
@@ -74,5 +74,9 @@ class MoviesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def movie_params
       params.require(:movie).permit(:name, :text)
+    end
+
+    def page
+      params[:page] || 1
     end
 end

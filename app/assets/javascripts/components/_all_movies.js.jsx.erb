@@ -1,0 +1,33 @@
+var AllMovies = React.createClass({
+  render() {
+    var movies = this.props.movies.map((movie) => {
+      return(
+        <div key= {movie.id}>
+          <div className="row" >
+            <div className="col-md-6">
+              <div className="media">
+                <div className="media-left">
+                <a href={"/movies/"+movie.id}>
+                  <img className="media-object" src="https://www.harrypottermovieposters.com/wp-content/uploads/2014/05/harry-potter-and-the-order-of-the-phoenix-movie-poster-2007-1020400773.jpg" alt="...">
+                  </img>
+                </a>
+                </div>
+                <div className="media-body">
+                  <h4 className="media-heading">{movie.name}</h4>
+                  {movie.text}
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr></hr>
+        </div>
+      )
+    });
+
+    return (
+      <div className="center jumbotron">
+        {movies}
+      </div>
+    )
+  }
+});

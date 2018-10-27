@@ -43,6 +43,10 @@ GEM
     arel (8.0.0)
     autoprefixer-rails (9.3.0)
       execjs
+    babel-source (5.8.35)
+    babel-transpiler (0.7.0)
+      babel-source (>= 4.0, < 6)
+      execjs (~> 2.0)
     bindex (0.5.0)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
@@ -77,6 +81,7 @@ GEM
       activesupport (>= 3.0)
       deep_merge (~> 1.1.1)
       dry-validation (>= 0.10.4)
+    connection_pool (2.2.0)
     crass (1.0.4)
     deep_merge (1.1.1)
     dry-configurable (0.7.0)
@@ -186,6 +191,13 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
+    react-rails (1.8.2)
+      babel-transpiler (>= 0.7.0)
+      coffee-script-source (~> 1.8)
+      connection_pool
+      execjs
+      railties (>= 3.2)
+      tilt
     require_all (2.0.0)
     ruby-progressbar (1.10.0)
     ruby_dep (1.5.0)
@@ -241,7 +253,6 @@ GEM
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
-    will_paginate (3.1.6)
     xpath (3.2.0)
       nokogiri (~> 1.8)
 
@@ -265,6 +276,7 @@ DEPENDENCIES
   rack-mini-profiler
   rails (~> 5.1.4)
   rails_best_practices
+  react-rails
   sass-rails (~> 5.0)
   seed_dump
   selenium-webdriver
@@ -275,7 +287,6 @@ DEPENDENCIES
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
-  will_paginate (~> 3.1.0)
 
 BUNDLED WITH
    1.16.1
