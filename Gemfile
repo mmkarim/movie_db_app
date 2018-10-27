@@ -19,6 +19,7 @@ gem 'config'
 gem 'active_model_serializers'
 gem "font-awesome-rails"
 gem 'devise'
+gem 'jwt'
 
 gem 'bootstrap-sass', '~> 3.3'
 gem 'react-rails'
