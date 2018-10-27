@@ -17,6 +17,8 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'config'
 gem 'active_model_serializers'
+gem "font-awesome-rails"
+gem 'devise'
 
 gem 'bootstrap-sass', '~> 3.3'
 gem 'react-rails'

@@ -1,7 +1,6 @@
 var AllMovies = React.createClass({
   showCategories(categories) {
     return categories.map(function(item){
-      console.log(item);
       return (
         <span key={item.id} className="label label-success">
           {item.name}
@@ -10,12 +9,23 @@ var AllMovies = React.createClass({
     });
   },
 
+  showCategories(categories) {
+    return categories.map(function(item){
+      return (
+        <span key={item.id} className="label label-success">
+          {item.name}
+        </span>
+      )
+    });
+  },
+
+
   render() {
     var movies = this.props.movies.map((movie) => {
       return(
         <div key= {movie.id}>
           <div className="row" >
-            <div className="col-md-3">
+            <div className="col-md-4">
               <div className="media">
                 <div className="media-left">
                 <a href={"/movies/"+movie.id}>
@@ -25,7 +35,9 @@ var AllMovies = React.createClass({
                 </div>
                 <div className="media-body">
                   <h4 className="media-heading">{movie.name}</h4>
-                  {movie.text}
+                  <small>{this.showCategories(movie.categories)}</small>
+                   <br></br>
+                  <small>{movie.text}</small>
                 </div>
               </div>
             </div>

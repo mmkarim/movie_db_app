@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
 
 /* universal */
 
@@ -20,14 +21,26 @@ textarea {
 }
 
 img {
-  width: 60px;
+  height: 150px;
+  margin-bottom: 10px;
 }
 
 
 .btn {
   margin-left: 10px;
+  margin-top: 10px;
 }
 
-span {
-  margin-left: 10px;
+span.label.label-success {
+  margin-right: 10px;
+  margin-top: 10px;
 }
+
+.fa.fa-star.checked {
+  color: orange;
+}
+.fa.fa-star:hover {
+  color: orange;
+}
+
+
