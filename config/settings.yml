@@ -1,0 +1,5 @@
+movie:
+  text:
+    limit: 20
+  image:
+    default_url: "https://www.directv.com/img/movies.jpg"

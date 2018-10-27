@@ -1,0 +1,19 @@
+<div class="row">
+  <% sliced_movies.each do |movie| %>
+    <div class="col-md-6">
+      <div class="media">
+        <div class="media-left">
+          <%= link_to movie_path(id: movie.id) do %>
+            <%= image_tag(Settings.movie.image.default_url, class:"media-object", style:"width:60px", alt:"...") %>
+          <% end %>
+        </div>
+        <div class="media-body">
+          <h4 class="media-heading"><%= movie.name %></h4>
+          <%= movie.text.truncate(Settings.movie.text.limit) %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<hr>
+
