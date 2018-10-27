@@ -1,4 +1,6 @@
 class Movie < ApplicationRecord
+  has_and_belongs_to_many :categories
+
   class << self
     def per_page
       10

@@ -4,10 +4,12 @@ class MoviesController < ApplicationController
   # GET /movies
   # GET /movies.json
   def index
-    @movies = Movie.paginate(page)
+    @movies = Movie.paginate(page).includes(:categories)
+    result = ActiveModelSerializers::SerializableResource.new(@movies, each_serializer: MovieSerializer, adapter: :attributes)
+
     respond_to do |format|
       format.html
-      format.json { render json: {movies: @movies, page: page, total_pages: Movie.total_pages}, status: :ok }
+      format.json { render json: {movies: result, page: page, total_pages: Movie.total_pages}, status: :ok }
     end
   end
 
@@ -73,7 +75,7 @@ class MoviesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def movie_params
-      params.require(:movie).permit(:name, :text)
+      params.require(:movie).permit(:name, :text, category_ids: [])
     end
 
     def page

@@ -5,6 +5,7 @@ var MovieBox = React.createClass({
 
   componentDidMount(){
     $.getJSON('/movies.json', (response) => {
+      console.log(response);
       this.setState({movies: response.movies, page: response.page, total_pages: response.total_pages})
     });
   },

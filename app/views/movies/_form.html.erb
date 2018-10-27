@@ -21,6 +21,16 @@
     <%= form.text_field :text, id: :movie_text %>
   </div>
 
+  <div class="field">
+    <%= form.label :categories %>
+    <%= form.collection_check_boxes(:category_ids, Category.all, :id, :name) do |b| %>
+      <ul class="list-inline">
+        <li><%= b.check_box(class: "check_box") %></li>
+        <li><%= b.object.name %></li>
+      </ul>
+    <%end%>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

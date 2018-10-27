@@ -16,6 +16,7 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'config'
+gem 'active_model_serializers'
 
 gem 'bootstrap-sass', '~> 3.3'
 gem 'react-rails'
