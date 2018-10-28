@@ -28,7 +28,6 @@ var AllMovies = React.createClass({
     } else {
       return null;
     }
-
   },
 
   showCategories(categories) {
@@ -42,7 +41,6 @@ var AllMovies = React.createClass({
   },
 
   averageRatingBar(value) {
-    console.log(value);
     let result = [];
     for (var i = 1; i <= 5; i++) {
       result.push(
@@ -64,7 +62,7 @@ var AllMovies = React.createClass({
         <div className="media-body">
           <div><h4 className="media-heading">{movie.name}</h4></div>
           <div><small>{this.showCategories(movie.categories)}</small></div>
-          <div><small>Avg. Rating: </small> {this.averageRatingBar(movie.average_ratings)}</div>
+          <div><small>Avg. Rating: </small> {this.averageRatingBar(movie.average_rating)}({movie.average_rating})</div>
           {this.userRatingBar(movie)}
           <div><small>{movie.text}</small></div>
         </div>
@@ -77,7 +75,7 @@ var AllMovies = React.createClass({
       return(
         <div key= {movie.id}>
           <div className="row" >
-            <div className="col-md-6">
+            <div className="col-md-4">
               {this.showMovie(movie)}
             </div>
 
@@ -88,6 +86,13 @@ var AllMovies = React.createClass({
                 </div>
               </div>
             </div>
+
+            <div className="col-md-4">
+              <div className="media">
+                <div className="media-left">
+                </div>
+              </div>
+            </div>
           </div>
           <hr></hr>
         </div>
@@ -95,7 +100,7 @@ var AllMovies = React.createClass({
     });
 
     return (
-      <div className="center jumbotron">
+      <div className="jumbotron moviebox">
         {movies}
       </div>
     )

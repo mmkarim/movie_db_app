@@ -20,6 +20,8 @@ gem 'active_model_serializers'
 gem "font-awesome-rails"
 gem 'devise'
 gem 'jwt'
+gem 'forty_facets', git: 'https://github.com/fortytools/forty_facets'
+gem "haml-rails"
 
 gem 'bootstrap-sass', '~> 3.3'
 gem 'react-rails'

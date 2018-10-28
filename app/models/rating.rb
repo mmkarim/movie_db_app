@@ -4,4 +4,11 @@ class Rating < ApplicationRecord
 
   validates :value, numericality: { greater_than: 0, less_than_or_equal_to: 5 }
   validates_presence_of :movie_id, :user_id
+
+  after_commit :update_movie_avg_rating!
+
+  private
+  def update_movie_avg_rating!
+    self.movie.update_average_rating!
+  end
 end

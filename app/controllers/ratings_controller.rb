@@ -8,7 +8,6 @@ class RatingsController < ApplicationController
     if valid_jwt?(params[:jwt]) && @rating.save
       render json: @rating, status: :created
     else
-      binding.pry
       render json: @rating.errors, status: :unprocessable_entity
     end
   end
