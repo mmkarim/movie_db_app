@@ -8,7 +8,6 @@ var AllMovies = React.createClass({
       return (
         <div>
           <a href={"/movies/"+movie.id+"/edit"} className="btn btn-info btn-xs" role="button">Edit</a>
-
           <button
             onClick={this.handleDelete.bind(this, movie.id)}
             className="btn btn-danger btn-xs">
@@ -31,6 +30,10 @@ var AllMovies = React.createClass({
     });
   },
 
+  showRatings() {
+
+  },
+
   showMovie(movie) {
     return (
       <div className="media">
@@ -43,6 +46,7 @@ var AllMovies = React.createClass({
         <div className="media-body">
           <h4 className="media-heading">{movie.name}</h4>
           <small>{this.showCategories(movie.categories)}</small>
+          <Ratings movie={movie}/>
            <br></br>
           <small>{movie.text}</small>
         </div>
@@ -55,7 +59,7 @@ var AllMovies = React.createClass({
       return(
         <div key= {movie.id}>
           <div className="row" >
-            <div className="col-md-6">
+            <div className="col-md-4">
               {this.showMovie(movie)}
             </div>
 
@@ -66,7 +70,6 @@ var AllMovies = React.createClass({
                 </div>
               </div>
             </div>
-
           </div>
           <hr></hr>
         </div>
