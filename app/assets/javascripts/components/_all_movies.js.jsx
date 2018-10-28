@@ -7,7 +7,9 @@ var AllMovies = React.createClass({
     if(!!this.props.jwt && movie.user_id == this.props.userId) {
       return (
         <div>
-          <a href={"/movies/"+movie.id+"/edit"} className="btn btn-info btn-xs" role="button">Edit</a>
+          <a href={"/movies/"+movie.id+"/edit"} className="btn btn-info btn-xs" role="button">
+            Edit
+          </a>
           <button
             onClick={this.handleDelete.bind(this, movie.id)}
             className="btn btn-danger btn-xs">
@@ -23,7 +25,9 @@ var AllMovies = React.createClass({
   userRatingBar(movie) {
     if(!!this.props.jwt) {
       return (
-        <div><small>My Rating: </small><Ratings movie={movie} jwt={this.props.jwt}/></div>
+        <div>
+          <small>Submit Your Rating: </small><Ratings movie={movie} jwt={this.props.jwt}/>
+        </div>
       )
     } else {
       return null;
@@ -44,7 +48,8 @@ var AllMovies = React.createClass({
     let result = [];
     for (var i = 1; i <= 5; i++) {
       result.push(
-        <span key={i} className={i <= value ? "fa fa-star checked" : "fa fa-star"}></span>
+        <span key={i} className={i <= value ? "fa fa-star checked" : "fa fa-star"}>
+        </span>
       );
     }
     return result;
@@ -55,14 +60,15 @@ var AllMovies = React.createClass({
       <div className="media">
         <div className="media-left">
         <a href={"/movies/"+movie.id}>
-          <img className="media-object" src="https://www.harrypottermovieposters.com/wp-content/uploads/2014/05/harry-potter-and-the-order-of-the-phoenix-movie-poster-2007-1020400773.jpg" alt="...">
+          <img className="media-object" src="https://www.directv.com/img/movies.jpg" alt="">
           </img>
         </a>
         </div>
         <div className="media-body">
           <div><h4 className="media-heading">{movie.name}</h4></div>
           <div><small>{this.showCategories(movie.categories)}</small></div>
-          <div><small>Avg. Rating: </small> {this.averageRatingBar(movie.average_rating)}({movie.average_rating})</div>
+          <small>Avg. Rating: </small>
+          {this.averageRatingBar(movie.average_rating)}({movie.average_rating})
           {this.userRatingBar(movie)}
           <div><small>{movie.text}</small></div>
         </div>
@@ -75,11 +81,11 @@ var AllMovies = React.createClass({
       return(
         <div key= {movie.id}>
           <div className="row" >
-            <div className="col-md-4">
+            <div className="col-md-6">
               {this.showMovie(movie)}
             </div>
 
-            <div className="col-md-3">
+            <div className="col-md-4">
               <div className="media">
                 <div className="media-left">
                   {this.crudButtons(movie)}
@@ -87,7 +93,7 @@ var AllMovies = React.createClass({
               </div>
             </div>
 
-            <div className="col-md-4">
+            <div className="col-md-2">
               <div className="media">
                 <div className="media-left">
                 </div>

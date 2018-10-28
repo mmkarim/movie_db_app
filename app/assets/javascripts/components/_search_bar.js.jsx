@@ -23,7 +23,7 @@ var SearchBar = React.createClass({
     let facet = this.props.facet;
     return Object.keys(facet).map(function(key) {
       return (
-        <div key={key} className="col-sm-2 col-md-4">
+        <div key={key} className="col-sm-3 col-md-4">
           <div className="panel-group">
             <div className="panel panel-default">
               <div className="panel-heading">
@@ -41,16 +41,29 @@ var SearchBar = React.createClass({
     }, this);
   },
 
+  handleTextSearch(e) {
+    e.preventDefault();
+    this.props.handleTextSearch(e.target.search.value);
+  },
+
+  textSearchBox() {
+    return(
+      <div className="col-sm-3 col-md-4">
+        <div className="search-container">
+          <form onSubmit={this.handleTextSearch}>
+            <input type="text" placeholder={this.props.search.name} name="search" />
+            <button type="submit"><i className="fa fa-search"></i></button>
+          </form>
+        </div>
+      </div>
+    )
+  },
+
   render() {
     return (
     <div className="row">
       {this.facetBar()}
-      <div className="col-sm-2 col-md-4">
-        <div className="search-container">
-            <input type="text" placeholder="Search.." name="search"/>
-            <button type="submit"><i className="fa fa-search"></i></button>
-        </div>
-       </div>
+      {this.textSearchBox()}
     </div>
     )
   }

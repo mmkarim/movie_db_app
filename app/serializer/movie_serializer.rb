@@ -3,7 +3,7 @@ class MovieSerializer < ActiveModel::Serializer
 
   def user_rating
     if @instance_options[:user_id]
-      Rating.find_by(movie_id: object.id, user_id: @instance_options[:user_id]).try(:value)
+      object.ratings.find{|rating| rating.user_id == @instance_options[:user_id]}.try(:value)
     end
   end
 

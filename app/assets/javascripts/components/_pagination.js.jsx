@@ -13,7 +13,10 @@ var Pagination = React.createClass({
     for (var i = 1; i <= this.props.total_pages; i++) {
       result.push(
         <li key={i} className="page-item">
-          <a className="page-link" onClick={this.handlePageChange.bind(this, i)} href="javascript:;">{i}</a>
+          <a className="page-link"
+            onClick={this.handlePageChange.bind(this, i)}
+            href="javascript:;">{i}
+          </a>
         </li>
       );
     }
@@ -22,11 +25,17 @@ var Pagination = React.createClass({
       <nav aria-label="Page navigation example">
         <ul className="pagination justify-content-center">
           <li className={prev ? "page-item" : "page-item disabled"}>
-            <a className="page-link" onClick={prev ? this.handlePageChange.bind(this, page - 1) : null} href="javascript:;">Previous</a>
+            <a className="page-link"
+              onClick={prev ? this.handlePageChange.bind(this, page - 1) : null}
+              href="javascript:;">Previous
+            </a>
           </li>
             {result}
           <li className={next ? "page-item" : "page-item disabled"}>
-            <a className="page-link" onClick={next ? this.handlePageChange.bind(this, page + 1) : null} href="javascript:">Next</a>
+            <a className="page-link"
+              onClick={next ? this.handlePageChange.bind(this, page + 1) : null}
+              href="javascript:">Next
+            </a>
           </li>
         </ul>
       </nav>
