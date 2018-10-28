@@ -5,7 +5,8 @@ class MoviesController < ApplicationController
 
   def index
     @movies = Movie.paginate(page).includes(:categories)
-    result = ActiveModelSerializers::SerializableResource.new(@movies, each_serializer: MovieSerializer, adapter: :attributes)
+    user_id = current_user.try(:id)
+    result = ActiveModelSerializers::SerializableResource.new(@movies, each_serializer: MovieSerializer, adapter: :attributes, user_id: user_id)
 
     respond_to do |format|
       format.html
@@ -50,10 +51,10 @@ class MoviesController < ApplicationController
   end
 
   def destroy
-    @movie.destroy
-    respond_to do |format|
-      format.html { redirect_to movies_url, notice: 'Movie was successfully destroyed.' }
-      format.json { head :no_content }
+    if valid_jwt?(params[:jwt]) && @movie.destroy
+        head :no_content
+     else
+      render json: "", status: :unprocessable_entity
     end
   end
 

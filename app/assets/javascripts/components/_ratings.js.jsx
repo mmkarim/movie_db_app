@@ -1,6 +1,7 @@
 var Ratings = React.createClass({
   getInitialState() {
-    return { index: 0, defaultValue: 0 }
+    let userRating = this.props.movie.user_rating;
+    return { index: userRating, defaultValue: userRating }
   },
 
   handleHover(index) {
@@ -8,7 +9,18 @@ var Ratings = React.createClass({
   },
 
   handleClick(value) {
-    this.setState({index: value, defaultValue: value});
+    $.ajax({
+      url: `/ratings/`,
+      type: 'POST',
+      data: {jwt: this.props.jwt, movie_id: this.props.movie.id, value: value},
+      dataType: "json",
+      success:(response) => {
+        this.setState({index: value, defaultValue: value});
+      },
+      error:(response) => {
+        alert("Authorization Failed!");
+      }
+    });
   },
 
   render() {

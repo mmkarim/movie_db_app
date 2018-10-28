@@ -1,5 +1,9 @@
 class Movie < ApplicationRecord
   has_and_belongs_to_many :categories
+  has_many :ratings, dependent: :destroy
+
+  validates_presence_of :name, :user_id
+  validates :name, uniqueness: { scope: :user }
 
   class << self
     def per_page
@@ -19,5 +23,9 @@ class Movie < ApplicationRecord
       offset = (page - 1) * per_page
       limit(per_page).offset(offset)
     end
+  end
+
+  def average_ratings
+    self.ratings.average(:value).to_i
   end
 end

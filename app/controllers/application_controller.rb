@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   def valid_jwt? jwt
     email = Auth.decode(jwt)["email"]
-    if admin_signed_in? && current_admin.email == email
+    if user_signed_in? && current_user.email == email
       true
     else
       false
