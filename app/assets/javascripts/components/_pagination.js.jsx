@@ -12,10 +12,11 @@ var Pagination = React.createClass({
 
     for (var i = 1; i <= this.props.total_pages; i++) {
       result.push(
-        <li key={i} className="page-item">
+        <li key={i} className={(page == i ? "page-item active": "page-item")}>
           <a className="page-link"
             onClick={this.handlePageChange.bind(this, i)}
-            href="javascript:;">{i}
+            href="javascript:;">
+            {i}
           </a>
         </li>
       );

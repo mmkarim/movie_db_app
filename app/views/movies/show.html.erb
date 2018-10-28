@@ -10,5 +10,12 @@
   <%= @movie.text %>
 </p>
 
+<p>
+  <strong>Categories:</strong>
+  <% @movie.categories.each do |category| %>
+      <li><%= category.name %></li>
+  <%end%>
+</p>
+
 <%= link_to 'Edit', edit_movie_path(@movie) %> |
 <%= link_to 'Back', movies_path %>

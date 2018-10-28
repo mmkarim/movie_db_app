@@ -26,7 +26,6 @@ var Main = React.createClass({
 
   handlePageChange(page=this.state.page, search=this.state.search) {
     $.getJSON('/movies.json', {page: page, search: search}, (response) => {
-      console.log(response);
       this.setState({
         movies: response.movies,
         page: response.page,
@@ -54,7 +53,6 @@ var Main = React.createClass({
   },
 
   render() {
-    console.log("renderingggggg");
     return (
       <div>
         <SearchBar

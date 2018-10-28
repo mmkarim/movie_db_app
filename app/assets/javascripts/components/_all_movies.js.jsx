@@ -65,7 +65,11 @@ var AllMovies = React.createClass({
         </a>
         </div>
         <div className="media-body">
-          <div><h4 className="media-heading">{movie.name}</h4></div>
+          <div>
+            <a href={"/movies/"+movie.id}>
+              <h4 className="media-heading">{movie.name}</h4>
+            </a>
+          </div>
           <div><small>{this.showCategories(movie.categories)}</small></div>
           <small>Avg. Rating: </small>
           {this.averageRatingBar(movie.average_rating)}({movie.average_rating})

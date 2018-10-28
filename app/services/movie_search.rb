@@ -1,3 +1,8 @@
+# React side use search and facet object to show facet and search info
+# initial state of these object should be like this,
+# search: {categories: [], average_rating:[], name: ""}
+# facet: {categories: [], average_rating:[]}
+
 class MovieSearch
   def initialize(params, page, user_id)
     @average_ratings = params[:search].try(:[],:average_rating)|| []
@@ -10,7 +15,6 @@ class MovieSearch
   end
 
   def filter
-    binding.pry
     make_category_facet_object
     make_avg_rating_facet_object
     @result[:movies] = create_movie_list
@@ -29,7 +33,7 @@ class MovieSearch
   end
 
   def name_condition
-    @name.empty? ? nil : "movies.name LIKE '%#{@name}%'"
+    @name.empty? ? nil : "movies.name ILIKE '%#{@name}%'"
   end
 
   def movie_query
@@ -61,7 +65,7 @@ class MovieSearch
 
   def create_movie_list
     ActiveModelSerializers::SerializableResource.new(
-      @movies.paginate(@page),
+      @movies.order(created_at: :desc).paginate(@page),
       each_serializer: MovieSerializer,
       adapter: :attributes,
       user_id: @user_id

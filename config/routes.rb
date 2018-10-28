@@ -3,4 +3,8 @@ Rails.application.routes.draw do
   root "movies#index"
   resources :movies
   resources :ratings, only: :create
+
+  authenticated do
+    root to: "secret#index", as: :authenticated_root
+  end
 end

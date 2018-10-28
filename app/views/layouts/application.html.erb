@@ -13,11 +13,12 @@
     <p class="alert"><%= alert %></p>
     <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
-        <%= link_to "sample app", '#', id: "logo" %>
+        <h4><%= link_to "Movie DB", root_path, id: "logo" %></h4>
         <nav>
           <ul class="nav navbar-nav navbar-right">
             <li><%= link_to "Home", root_path %></li>
             <% if user_signed_in? %>
+            <li><%= link_to "Add Movies", new_movie_path %></li>
               <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
             <%else%>
               <li><%= link_to "Log in", new_user_session_path %></li>

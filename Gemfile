@@ -23,6 +23,7 @@ gem 'jwt'
 
 gem 'bootstrap-sass', '~> 3.3'
 gem 'react-rails'
+gem 'faker'
 
 group :development, :test do
   gem 'byebug', platform: :mri
@@ -31,7 +32,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'rspec-rails', '~> 3.8'
   gem "factory_bot_rails", "~> 4.0"
-  gem 'faker'
+  gem 'airborne'
 end
 
 group :test do

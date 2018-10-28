@@ -1,6 +1,5 @@
 var SearchBar = React.createClass({
   handleClick(key, value, selected) {
-    console.log(selected);
     if(selected == true) {
       return this.props.handleFacetUnCheck(key, value);
     }

@@ -10,5 +10,6 @@ class Rating < ApplicationRecord
   private
   def update_movie_avg_rating!
     self.movie.update_average_rating!
+  rescue
   end
 end
