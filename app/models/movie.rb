@@ -4,7 +4,7 @@ class Movie < ApplicationRecord
   belongs_to :user
 
   validates_presence_of :name, :user_id
-  validates :name, uniqueness: { scope: :user }
+  validates :name, uniqueness: { scope: :user_id, case_sensitive: false }
 
   class << self
     def per_page
@@ -17,7 +17,7 @@ class Movie < ApplicationRecord
       pages.to_i
     end
 
-    def paginate page = 1, per_page=  self.per_page
+    def paginate page = 1, per_page = self.per_page
       page = page.to_i
       per_page = per_page.to_i
 
