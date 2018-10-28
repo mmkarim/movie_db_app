@@ -1,12 +1,24 @@
 var AllMovies = React.createClass({
-  showCategories(categories) {
-    return categories.map(function(item){
+  handleDelete(movieId) {
+    this.props.handleDelete(movieId)
+  },
+
+  crudButtons(movie) {
+    if(!!this.props.jwt && movie.user_id == this.props.userId) {
       return (
-        <span key={item.id} className="label label-success">
-          {item.name}
-        </span>
+        <div>
+          <a href={"/movies/"+movie.id+"/edit"} className="btn btn-info btn-xs" role="button">Edit</a>
+
+          <button
+            onClick={this.handleDelete.bind(this, movie.id)}
+            className="btn btn-danger btn-xs">
+              Delete
+          </button>
+        </div>
       )
-    });
+    } else {
+      return null;
+    }
   },
 
   showCategories(categories) {
@@ -19,42 +31,38 @@ var AllMovies = React.createClass({
     });
   },
 
+  showMovie(movie) {
+    return (
+      <div className="media">
+        <div className="media-left">
+        <a href={"/movies/"+movie.id}>
+          <img className="media-object" src="https://www.harrypottermovieposters.com/wp-content/uploads/2014/05/harry-potter-and-the-order-of-the-phoenix-movie-poster-2007-1020400773.jpg" alt="...">
+          </img>
+        </a>
+        </div>
+        <div className="media-body">
+          <h4 className="media-heading">{movie.name}</h4>
+          <small>{this.showCategories(movie.categories)}</small>
+           <br></br>
+          <small>{movie.text}</small>
+        </div>
+      </div>
+    )
+  },
 
   render() {
     var movies = this.props.movies.map((movie) => {
       return(
         <div key= {movie.id}>
           <div className="row" >
-            <div className="col-md-4">
-              <div className="media">
-                <div className="media-left">
-                <a href={"/movies/"+movie.id}>
-                  <img className="media-object" src="https://www.harrypottermovieposters.com/wp-content/uploads/2014/05/harry-potter-and-the-order-of-the-phoenix-movie-poster-2007-1020400773.jpg" alt="...">
-                  </img>
-                </a>
-                </div>
-                <div className="media-body">
-                  <h4 className="media-heading">{movie.name}</h4>
-                  <small>{this.showCategories(movie.categories)}</small>
-                   <br></br>
-                  <small>{movie.text}</small>
-                </div>
-              </div>
+            <div className="col-md-6">
+              {this.showMovie(movie)}
             </div>
 
             <div className="col-md-3">
               <div className="media">
                 <div className="media-left">
-                  {this.showCategories(movie.categories)}
-                </div>
-              </div>
-            </div>
-
-            <div className="col-md-3">
-              <div className="media">
-                <div className="media-left">
-                  <a href={"/movies/"+movie.id+"/edit"} className="btn btn-info" role="button">Edit</a>
-                  <a href={"/movies/"+movie.id} data-method="delete" className="btn btn-danger" role="button">Delete</a>
+                  {this.crudButtons(movie)}
                 </div>
               </div>
             </div>
